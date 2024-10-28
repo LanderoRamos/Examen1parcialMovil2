@@ -1,9 +1,5 @@
-using Microsoft.Maui.Maps;
-using Xamarin.Essentials;
-using Microsoft.Maui.Controls.Maps;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Maui.Controls;
 
 
 namespace Examen1parcial.Views;
