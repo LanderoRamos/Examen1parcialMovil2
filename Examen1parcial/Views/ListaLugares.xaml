@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Examen1parcial.Helpers"
+             x:Class="Examen1parcial.Views.ListaLugares"
+             Title="ListaLugares">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:Base64ToImageConverter x:Key="Base64ToImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <ListView x:Name="LugarListView" RowHeight="250" ItemTapped="LugarListView_ItemTapped" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!-- Usamos un ViewCell para mostrar múltiples datos -->
+                    <ViewCell>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItem Text="Eliminar" 
+                                   BackgroundColor="Red" 
+                                   CommandParameter="{Binding .}"
+                                   Invoked="EliminarAutor_SwipeItemInvoked"/>
+                            </SwipeView.RightItems>
+
+                            <!--SwipeView.LeftItems>
+                                <SwipeItem Text="Modificar" 
+                                   BackgroundColor="#20d8d0" 
+                                   CommandParameter="{Binding .}"
+                                   />
+                            </SwipeView.LeftItems-->
+
+                            <StackLayout Orientation="Vertical" Padding="10">
+                                <Label
+                                    x:Name="lat"
+                                    Text="{Binding Latitud}" FontSize="15" />
+                                <Label
+                                    x:Name="lon"
+                                    Text="{Binding Longitud}" FontSize="15" />
+                                <Label
+                                    x:Name="des"
+                                    Text="{Binding Descripcion}" FontSize="20" />
+                                <Image Source="{Binding FotoBase64, Converter={StaticResource Base64ToImageConverter}}" HeightRequest="100"/>
+
+
+                                <!-- Agregar la fecha en el formato deseado -->
+                            </StackLayout>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ScrollView>
+
+
+</ContentPage>
